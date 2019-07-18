@@ -3,7 +3,7 @@ import React from 'react';
 import './collection-item.scss';
 
 const CollectionItem = props => {
-  const { id, name, price, imageUrl } = props;
+  const { name, price, imageUrl } = props;
   console.log(props);
   return (
     <div className='collection-item'>
