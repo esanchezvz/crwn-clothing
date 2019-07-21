@@ -10,6 +10,8 @@ import {
 import './checkout-page.scss';
 import CheckOutItem from '../../components/checkout-item/checkout-item.component';
 
+let key = 0;
+
 const CheckOutPage = ({ cartItems, totalPrice }) => {
   return (
     <div className='checkout-page'>
