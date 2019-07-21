@@ -9,7 +9,7 @@ const config = {
   projectId: 'crwn-react',
   storageBucket: '',
   messagingSenderId: '1077471742785',
-  appId: '1:1077471742785:web:c8b7ceca3a07097a'
+  appId: '1:1077471742785:web:c8b7ceca3a07097a',
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -23,10 +23,23 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     const createdAt = new Date();
 
     try {
-      await userRef.set({ displayName, email, createdAt, ...additionalData });
+      console.log('Crear documento en db\n', userAuth);
+      console.log('Datos a guardar ->\n');
+      console.table({
+        displayName: displayName,
+        email: email,
+        createdAt,
+        ...additionalData,
+      });
+      await userRef.set({
+        displayName: displayName,
+        email: email,
+        createdAt,
+        ...additionalData,
+      });
     } catch (err) {
       alert('Error occurred. \nCheck console for error.');
-      console.log('error creating user', err);
+      console.log('error creating user\n', err);
     }
   }
 

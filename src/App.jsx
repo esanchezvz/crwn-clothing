@@ -13,7 +13,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      currentUser: null
+      currentUser: null,
     };
   }
 
@@ -21,21 +21,22 @@ class App extends React.Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      // console.log('AUTH STATE CHANGE DETECTED');
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapshot => {
           this.setState(
             {
-              currentUser: { id: snapshot.id, ...snapshot.data() }
+              currentUser: { id: snapshot.id, ...snapshot.data() },
             },
-            () => console.log(this.state)
+            // () => console.log(this.state),
           );
         });
       }
 
       this.setState({
-        currentUser: userAuth
+        currentUser: userAuth,
       });
     });
   }
